@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using Android.Support.V7.App;
+using System.Collections.Generic;
 
 namespace Android_FollowUP
 {
@@ -12,8 +13,17 @@ namespace Android_FollowUP
         {
             base.OnCreate(savedInstanceState);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+
+            ListView view = FindViewById<ListView>(Resource.Id.lstView);
+            List<string> lst = new List<string>();
+            lst.Add("Kuldeep");
+            lst.Add("Bob");
+            lst.Add("Tim");
+
+            MyListViewAdapter adapter = new MyListViewAdapter(this, lst);
+
+            view.Adapter = adapter;
         }
     }
 }
