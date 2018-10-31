@@ -12,18 +12,18 @@ using Android.Widget;
 
 namespace Android_FollowUP
 {
-    class MyListViewAdapter : BaseAdapter<string>
+    class MyListViewAdapter : BaseAdapter<Person>
     {
-        private List<string> List;
+        private List<Person> List;
         private Context mContext;
 
-        public MyListViewAdapter(Context context, List<string> list)
+        public MyListViewAdapter(Context context, List<Person> list)
         {
             List = list;
             mContext = context;
         }
 
-        public override string this[int position]
+        public override Person this[int position]
         {
             get { return List[position]; }
         }
@@ -47,8 +47,17 @@ namespace Android_FollowUP
                 row = LayoutInflater.From(mContext).Inflate(Resource.Layout.list_layout, null, false);
             }
 
-            TextView textView = row.FindViewById<TextView>(Resource.Id.name);
-            textView.Text = List[position];
+            TextView FirstName= row.FindViewById<TextView>(Resource.Id.FirstName);
+            FirstName.Text = List[position].FirstName;
+
+            TextView LastName = row.FindViewById<TextView>(Resource.Id.LastName);
+            LastName.Text = List[position].LastName;
+
+            TextView Age = row.FindViewById<TextView>(Resource.Id.Age);
+            Age.Text = List[position].Age.ToString();
+
+            TextView Gender = row.FindViewById<TextView>(Resource.Id.Gender);
+            Gender.Text = List[position].Gender;
 
             return row;
         }
